@@ -4,7 +4,7 @@
 #
 Name     : wiredtiger
 Version  : 2.6.1
-Release  : 3
+Release  : 4
 URL      : http://source.wiredtiger.com/releases/wiredtiger-2.6.1.tar.bz2
 Source0  : http://source.wiredtiger.com/releases/wiredtiger-2.6.1.tar.bz2
 Summary  : Test discovery for unittest. Backported from Python 2.7 for Python 2.4+
