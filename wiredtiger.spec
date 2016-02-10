@@ -4,7 +4,7 @@
 #
 Name     : wiredtiger
 Version  : 2.7.0
-Release  : 6
+Release  : 7
 URL      : http://source.wiredtiger.com/releases/wiredtiger-2.7.0.tar.bz2
 Source0  : http://source.wiredtiger.com/releases/wiredtiger-2.7.0.tar.bz2
 Summary  : Extensions to the Python standard library unit testing framework
@@ -12,12 +12,17 @@ Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause GPL-2.0 GPL-3.0 MIT
 Requires: wiredtiger-bin
 Requires: wiredtiger-doc
+BuildRequires : bzip2-dev
+BuildRequires : gperftools-dev
+BuildRequires : lz4-dev
 BuildRequires : pbr
 BuildRequires : pip
+BuildRequires : pkgconfig(zlib)
 BuildRequires : python-dev
 BuildRequires : python3-dev
 BuildRequires : scons
 BuildRequires : setuptools
+BuildRequires : snappy-dev
 
 %description
 WiredTiger is a data storage engine that provides APIs for efficiently
@@ -57,14 +62,11 @@ doc components for the wiredtiger package.
 %setup -q -n wiredtiger-2.7.0
 
 %build
-%configure --disable-static
+%configure --disable-static --enable-bzip2 \
+--enable-lz4 \
+--enable-tcmalloc \
+--with-builtins=snappy,zlib
 make V=1  %{?_smp_mflags}
-
-%check
-export http_proxy=http://127.0.0.1:9/
-export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
-make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
 rm -rf %{buildroot}

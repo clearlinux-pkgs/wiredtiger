@@ -1,0 +1,4 @@
+--enable-bzip2
+--enable-lz4
+--enable-tcmalloc
+--with-builtins=snappy,zlib
