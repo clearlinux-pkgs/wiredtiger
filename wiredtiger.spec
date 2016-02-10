@@ -4,7 +4,7 @@
 #
 Name     : wiredtiger
 Version  : 2.7.0
-Release  : 7
+Release  : 8
 URL      : http://source.wiredtiger.com/releases/wiredtiger-2.7.0.tar.bz2
 Source0  : http://source.wiredtiger.com/releases/wiredtiger-2.7.0.tar.bz2
 Summary  : Extensions to the Python standard library unit testing framework
@@ -67,6 +67,12 @@ doc components for the wiredtiger package.
 --enable-tcmalloc \
 --with-builtins=snappy,zlib
 make V=1  %{?_smp_mflags}
+
+%check
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
+make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
 rm -rf %{buildroot}
