@@ -4,7 +4,7 @@
 #
 Name     : wiredtiger
 Version  : 2.7.0
-Release  : 11
+Release  : 12
 URL      : http://source.wiredtiger.com/releases/wiredtiger-2.7.0.tar.bz2
 Source0  : http://source.wiredtiger.com/releases/wiredtiger-2.7.0.tar.bz2
 Summary  : Extensions to the Python standard library unit testing framework
